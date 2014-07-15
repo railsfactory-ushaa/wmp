@@ -1,4 +1,7 @@
 require 'sinatra'
+require'./roman.rb'
+require './numbers.rb'
+require './spell_digit.rb'
 
 
 get '/hi' do
@@ -30,13 +33,19 @@ end
 
 
 get '/page' do 
-name  =   params['name']
+date  =   params['date']
+month = params['month']
+year = params['year']
 page =    File.read('./form.html')
-page =  page + '<h1>' + name.to_s + '<h1>' # unless name.nil?
+s = Roman.convert(year)
+l = Numbers.convert(date)
+c = Spell_digit.convert(year)
+
+page =  page + ' ' + l + ' ' + month.to_s + ' ' + year.to_s + ' ' + s + ' ' + c  # unless name.nil?
 end
 
 get '/page2' do 
-name  =   params['name']
+date  =   params['date']
 page =    File.read('./form.html')
-page.gsub( '#name#',   name.to_s )
+page.gsub( '#calender',date.to_s )
 end
