@@ -1,35 +1,11 @@
-
-require'./roman.rb'
+require 'sinatra'
+require './roman.rb'
 require './numbers.rb'
 require './spell_digit.rb'
-require 'sinatra'
-
-get '/hi' do
-  "Hello World!"
-end
+require './kan1.rb'
 
 
-get '/time' do
-  Time.now.strftime("%d-%m-%Y %B %e %A")
-end
 
-get '/hello/:name' do
-  "Hello #{params[:name]}!"
-end
-
-get '/html' do
-  "
-<html>  
-  <head>
-  <title>hello </title>
-  </head>
-  <body>
-  <h1>hello world</h1>
-  </body>
-  
-</html>  
-  "
-end
 
 
 get '/page' do 
@@ -40,18 +16,17 @@ page =    File.read('./form.html')
 s = Roman.convert(year)
 l = Numbers.convert(date)
 c = Spell_digit.convert(year)
-
+x = ""
+if date !=0 && month!=0 && year!=0
 t = Time.new(year,month,date)
-x= t.strftime ('%A')
-# x =''                            
-           
+x = t.strftime ('%A')
+a = Kannada.convert(x)
+end
 
-page =  page + ' ' + l + ' ' + month.to_s + ' ' + year.to_s + ' ' + s + ' ' + c + ' ' + x
+                          
+page =  page + ' ' + l + ' ' + month.to_s + ' ' + year.to_s + ' ' + s + ' ' + c + ' ' + x + ' '+ a.to_s
 
 end
 
-get '/page2' do 
-date  =   params['date']
-page =    File.read('./form.html')
-page.gsub( '#calender',date.to_s )
-end
+
+
