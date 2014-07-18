@@ -1,0 +1,6 @@
+save done
+search pending
+store pending
+merge pending
+write pending
+read pending
