@@ -1,0 +1,11 @@
+<h1>tables are</h1>
+<ol>
+<% @tables.each do |table| %>
+<li><%=table.values.first%> 
+<a href='/show_table?database=<%=params["database"]%>&table=<%=table.values.first%>'>show_tables</a> </li>
+<%end%>
+</ol>
+<a href='/home'>click here to go back to home page</a>
+
+
+

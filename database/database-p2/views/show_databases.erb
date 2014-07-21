@@ -1,0 +1,11 @@
+<h1>databases are</h1>
+<ol>
+<%@tasks.each do |database| %>
+
+<%=database["Database"] %>
+
+ <a href='/show_tables?database=<%=database["Database"]%>'>show_tables</a> <br/>
+<% end %>
+
+</ol>
+<a href='/home'>click here to go back to home page</a>
