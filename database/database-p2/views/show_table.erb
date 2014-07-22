@@ -1,13 +1,28 @@
 <h1>tables are</h1>
-<ol>
+<table border = "1">
 <% @table.each do |table| %>
-<li><%=table.values%> </li><br/>
+<%@x=table.values %>
+<%@x.each do |i| %>
+<tr>
+<td><%=i%></td>
 <%end%>
-</ol>
-<% @table2.each do |table| %>
-<li><%=table.values%> </li><br/>
+</tr>
+<%end%>
+</table>
+<br/>
+<br/><br/>
 
+
+<table border = "1">
+<% @table2.each do |table| %>
+<%@x=table.values %>
+<%@x.each do |i| %>
+<tr>
+<td><%=i%></td>
 <%end%>
+</tr>
+<%end%>
+</table>
 
 <a href='/home'>click here to go back to home page</a>
 
